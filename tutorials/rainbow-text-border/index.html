@@ -9,7 +9,7 @@
 		<style>
 			@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Titan+One&display=swap');
 
-			* {
+			body {
 				box-sizing: border-box;
 				background: #222;
 			}
@@ -188,8 +188,8 @@
 				position: absolute;
 				top: calc(-400vh / 2);
 				left: calc(-200vh / 2);
-				min-width: 400vh;
-				min-height: 400vh;
+				width: 400vh;
+				height: 400vh;
 				border-radius: 100%;
 				background: #fffd33;
 				background: linear-gradient(
@@ -224,6 +224,24 @@
 				}
 			}
 
+			@keyframes shadow {
+				0% {
+					filter: drop-shadow(0px 20px 3px rgba(226, 125, 1, 0.9));
+				}
+				25% {
+					filter: drop-shadow(0px 20px 3px rgba(32, 173, 0, 0.9));
+				}
+				50% {
+					filter: drop-shadow(0px 20px 3px rgba(0, 95, 173, 0.9));
+				}
+				75% {
+					filter: drop-shadow(0px 20px 3px rgba(101, 0, 173, 0.9));
+				}
+				100% {
+					filter: drop-shadow(0px 20px 3px rgba(226, 125, 1, 0.9));
+				}
+			}
+
 			@keyframes rotate {
 				50% {
 					background: radial-gradient(
@@ -237,6 +255,69 @@
 						rgba(162, 4, 144, 1) 100%
 					);
 				}
+			}
+
+			.path-shadow {
+				height: 400px;
+				display: block;
+				margin: 20px auto;
+				filter: drop-shadow(0px 20px 3px rgba(226, 125, 1, 0.9));
+				animation: shadow 3s infinite linear;
+			}
+			.path-shadow-shape {
+				padding: 120px;
+				border: 1px solid #222;
+				box-shadow: none;
+				background: transparent;
+				clip-path: polygon(
+					5.56% 5.56%,
+					50% 0%,
+					94.44% 5.56%,
+					100% 50%,
+					94.44% 94.44%,
+					50% 100%,
+					5.56% 94.44%,
+					10% 90%,
+					50% 94.44%,
+					90% 90%,
+					94.44% 50%,
+					90% 10%,
+					50% 5.56%,
+					50% 34.62%,
+					38.24% 38.24%,
+					34.62% 50%,
+					38.24% 61.76%,
+					50% 65.38%,
+					61.76% 61.76%,
+					65.38% 50%,
+					61.76% 38.24%,
+					50% 34.62%,
+					50% 20.37%,
+					72.22% 27.78%,
+					79.63% 50%,
+					72.22% 72.22%,
+					50% 79.63%,
+					27.78% 72.22%,
+					20.37% 50%,
+					27.78% 27.78%,
+					50% 20.37%,
+					50% 5.56%,
+					10% 10%,
+					5.56% 50%,
+					10% 90%,
+					5.56% 94.44%,
+					0% 50%
+				);
+				background: radial-gradient(
+					circle,
+					rgba(255, 0, 0, 1) 0%,
+					rgba(255, 155, 0, 1) 25%,
+					rgba(235, 255, 0, 1) 65%,
+					rgba(0, 255, 52, 1) 100%
+				);
+				width: 100px;
+				height: 100px;
+				animation: spin 4s infinite linear;
 			}
 		</style>
 	</head>
@@ -323,6 +404,10 @@
 					tenetur officiis earum repellat animi amet?
 				</p>
 			</div>
+		</div>
+
+		<div class="path-shadow">
+			<div class="path-shadow-shape"></div>
 		</div>
 	</body>
 </html>

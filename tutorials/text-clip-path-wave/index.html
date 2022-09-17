@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Titan+One&display=swap');
+
+			:root {
+				--font-size: 123px;
+			}
+			::selection {
+				color: #fff;
+				background: #009966;
+			}
+			.sh {
+				position: absolute;
+				float: left;
+				display: inline-block;
+				color: transparent;
+				font-size: var(--font-size);
+				font-family: 'Bebas Neue', cursive;
+				font-family: 'Titan One', cursive;
+				-webkit-text-stroke: 2px black;
+				/* text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000,
+					-1px -1px 0 #000; */
+			}
+			.clip {
+				position: absolute;
+				float: left;
+				display: inline-block;
+				color: #f90;
+				font-size: var(--font-size);
+				font-family: 'Bebas Neue', cursive;
+				font-family: 'Titan One', cursive;
+				-webkit-text-stroke: 2px black;
+				clip-path: polygon(
+					0% 60%,
+					26% 44%,
+					46% 44%,
+					67% 64%,
+					83% 66%,
+					100% 42%,
+					100% 100%,
+					0% 100%
+				);
+				animation: wave 4s ease-in infinite;
+			}
+
+			@keyframes wave {
+				0% {
+					clip-path: polygon(
+						0% 60%,
+						26% 44%,
+						46% 44%,
+						67% 64%,
+						83% 66%,
+						100% 42%,
+						100% 100%,
+						0% 100%
+					);
+					color: #f90;
+				}
+
+				30% {
+					clip-path: polygon(
+						0 23%,
+						17% 37%,
+						45% 35%,
+						65% 15%,
+						88% 17%,
+						100% 42%,
+						100% 100%,
+						0% 100%
+					);
+					color: #009966;
+				}
+
+				50% {
+					clip-path: polygon(
+						0 0,
+						16% 0,
+						45% 0,
+						66% 0,
+						100% 0,
+						100% 42%,
+						100% 100%,
+						0% 100%
+					);
+					color: rgb(0, 128, 255);
+				}
+
+				70% {
+					clip-path: polygon(
+						0 23%,
+						17% 37%,
+						45% 35%,
+						65% 15%,
+						88% 17%,
+						100% 42%,
+						100% 100%,
+						0% 100%
+					);
+					color: #ff2ddc;
+				}
+
+				100% {
+					clip-path: polygon(
+						0% 60%,
+						26% 44%,
+						46% 44%,
+						67% 64%,
+						83% 66%,
+						100% 42%,
+						100% 100%,
+						0% 100%
+					);
+					color: #f90;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="sh">HELLO</div>
+		<div class="clip">HELLO</div>
+	</body>
+</html>

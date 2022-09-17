@@ -1,2 +1,2 @@
 # atomjoy.github.io
-Atomjoy github profil.
+Atomjoy github page.

@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Css tęczowy tekst, tło i ramka</title>
+		<title>Css tęczowy tekst, logo, tło i ramka</title>
 
 		<style>
 			@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Titan+One&display=swap');
@@ -56,6 +56,22 @@
 					)
 					repeat scroll 0% 0% padding-box text;
 				-webkit-text-fill-color: transparent;
+			}
+
+			.radial {
+				padding: 15px;
+				background: rgb(162, 4, 144);
+				background: radial-gradient(
+					circle,
+					rgba(162, 4, 144, 1) 0%,
+					rgba(9, 9, 121, 1) 15%,
+					rgba(0, 212, 255, 1) 35%,
+					rgba(0, 255, 52, 1) 50%,
+					rgba(235, 255, 0, 1) 64%,
+					rgba(255, 155, 0, 1) 85%,
+					rgba(255, 0, 0, 1) 100%
+				);
+				animation: rotate 5s infinite;
 			}
 
 			.rainbow-bg-color {
@@ -158,6 +174,70 @@
 				-webkit-clip-path: url('#github');
 				clip-path: url(#github);
 			}
+
+			.spiner-box {
+				padding: 15px;
+				margin: 20px auto;
+				border-radius: 15px;
+				position: relative;
+				overflow: hidden;
+				height: auto;
+			}
+
+			.spiner-box .spiner {
+				position: absolute;
+				top: calc(-400vh / 2);
+				left: calc(-200vh / 2);
+				min-width: 400vh;
+				min-height: 400vh;
+				border-radius: 100%;
+				background: #fffd33;
+				background: linear-gradient(
+						90deg,
+						#ff0000 0%,
+						#ff0000 20%,
+						#ff9900 30%,
+						#fff900 40%,
+						#70fd33 55%,
+						#0099ff 65%,
+						#034fb3 75%,
+						#af02ce 85%,
+						#af02ce 100%
+					)
+					repeat scroll 0% 0%;
+				z-index: 1;
+				animation: spin 2s infinite linear;
+			}
+
+			.spiner-box .text {
+				position: relative;
+				float: left;
+				z-index: 2;
+			}
+
+			@keyframes spin {
+				from {
+					transform: rotate(0deg);
+				}
+				to {
+					transform: rotate(360deg);
+				}
+			}
+
+			@keyframes rotate {
+				50% {
+					background: radial-gradient(
+						circle,
+						rgba(255, 0, 0, 1) 0%,
+						rgba(255, 155, 0, 1) 15%,
+						rgba(235, 255, 0, 1) 35%,
+						rgba(0, 255, 52, 1) 50%,
+						rgba(0, 212, 255, 1) 64%,
+						rgba(9, 9, 121, 1) 85%,
+						rgba(162, 4, 144, 1) 100%
+					);
+				}
+			}
 		</style>
 	</head>
 	<body>
@@ -173,6 +253,21 @@
 				</clipPath>
 			</defs>
 		</svg>
+
+		<div class="spiner-box">
+			<div class="spiner"></div>
+			<div class="text">
+				<p class="rainbow-text-color title-size">
+					Let's build rainbow border in CSS
+				</p>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
+					laudantium facilis obcaecati labore quo sapiente veritatis numquam,
+					nesciunt architecto accusamus? Voluptatibus fuga reprehenderit est
+					tenetur officiis earum repellat animi amet?
+				</p>
+			</div>
+		</div>
 
 		<div class="box rainbow-bg-color">
 			<div class="text">
@@ -205,6 +300,20 @@
 		<div class="box">
 			<div class="text rainbow-box">
 				<p class="rainbow-text-color-lr title-size">
+					Let's build rainbow border in CSS
+				</p>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
+					laudantium facilis obcaecati labore quo sapiente veritatis numquam,
+					nesciunt architecto accusamus? Voluptatibus fuga reprehenderit est
+					tenetur officiis earum repellat animi amet?
+				</p>
+			</div>
+		</div>
+
+		<div class="box radial">
+			<div class="text">
+				<p class="rainbow-text-color title-size">
 					Let's build rainbow border in CSS
 				</p>
 				<p>

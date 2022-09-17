@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Css tęczowy tekst, tło i ramka</title>
+
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Titan+One&display=swap');
+
+			* {
+				color: #fff;
+				box-sizing: border-box;
+			}
+
+			.rainbow-text-color {
+				background: rgba(0, 0, 0, 0)
+					linear-gradient(
+						71.18deg,
+						rgb(0, 34, 255) -27.32%,
+						rgb(0, 34, 255) -16.39%,
+						rgb(81, 121, 254) -7.38%,
+						rgb(165, 237, 182) 30.59%,
+						rgb(250, 232, 90) 46.06%,
+						rgb(253, 172, 62) 62.61%,
+						rgb(255, 92, 0) 75.82%
+					)
+					repeat scroll 0% 0% padding-box text;
+				-webkit-text-fill-color: transparent;
+			}
+
+			.rainbow-bg-color {
+				padding: 15px;
+				border-radius: 10px;
+				background: rgba(0, 0, 0, 0)
+					linear-gradient(
+						71.18deg,
+						rgb(0, 34, 255) -27.32%,
+						rgb(0, 34, 255) -16.39%,
+						rgb(81, 121, 254) -7.38%,
+						rgb(165, 237, 182) 30.59%,
+						rgb(250, 232, 90) 46.06%,
+						rgb(253, 172, 62) 62.61%,
+						rgb(255, 92, 0) 75.82%
+					)
+					repeat scroll 0% 0%;
+			}
+
+			.rainbow-bg {
+				padding: 5px;
+				background-color: #222;
+				border: double 10px transparent;
+				border-radius: 10px;
+				background-image: linear-gradient(white, white),
+					linear-gradient(
+						to bottom right,
+						#8109b9 0%,
+						#2c90fc 25%,
+						#b8fd33 50%,
+						#fec837 75%,
+						#fd1851 100%
+					);
+				background-origin: border-box;
+				background-clip: content-box, border-box;
+			}
+
+			.rainbow-box {
+				padding: 20px;
+				background-color: #222;
+				border: 15px solid transparent;
+				border-image: linear-gradient(
+					to bottom right,
+					#8109b9 0%,
+					#2c90fc 25%,
+					#b8fd33 50%,
+					#fec837 75%,
+					#fd1851 100%
+				);
+				border-image-slice: 1;
+			}
+
+			.box {
+				display: inline-block;
+				margin: 20px auto;
+			}
+
+			.text {
+				padding: 20px;
+				background-color: #222;
+			}
+
+			.title-size {
+				font-size: 35px;
+				display: inline-block;
+				font-family: 'Titan One', cursive;
+			}
+
+			p {
+				font-size: 23px;
+				font-family: 'Bebas Neue', cursive;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box rainbow-bg-color">
+			<div class="text">
+				<p class="rainbow-text-color title-size">
+					Let's build rainbow border in CSS
+				</p>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
+					laudantium facilis obcaecati labore quo sapiente veritatis numquam,
+					nesciunt architecto accusamus? Voluptatibus fuga reprehenderit est
+					tenetur officiis earum repellat animi amet?
+				</p>
+			</div>
+		</div>
+
+		<div class="box rainbow-bg">
+			<div class="text">
+				<p class="rainbow-text-color title-size">
+					Let's build rainbow border in CSS
+				</p>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
+					laudantium facilis obcaecati labore quo sapiente veritatis numquam,
+					nesciunt architecto accusamus? Voluptatibus fuga reprehenderit est
+					tenetur officiis earum repellat animi amet?
+				</p>
+			</div>
+		</div>
+
+		<div class="box rainbow-box">
+			<div class="text">
+				<p class="rainbow-text-color title-size">
+					Let's build rainbow border in CSS
+				</p>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
+					laudantium facilis obcaecati labore quo sapiente veritatis numquam,
+					nesciunt architecto accusamus? Voluptatibus fuga reprehenderit est
+					tenetur officiis earum repellat animi amet?
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

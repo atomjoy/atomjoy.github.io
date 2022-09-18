@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -26,8 +26,11 @@
 						rgb(253, 172, 62) 62.61%,
 						rgb(255, 92, 0) 75.82%
 					)
-					repeat scroll 0% 0% padding-box text;
-				-webkit-text-fill-color: transparent;
+					repeat scroll 0% 0%;
+				background-clip: text;
+				background-origin: content-box;
+				color: transparent;
+				/* -webkit-text-fill-color: transparent; */
 			}
 
 			.rainbow-text-color-bt {
@@ -71,7 +74,7 @@
 					rgba(255, 155, 0, 1) 85%,
 					rgba(255, 0, 0, 1) 100%
 				);
-				animation: rotate 5s infinite;
+				animation: rotate 1s linear infinite;
 			}
 
 			.rainbow-bg-color {
@@ -173,6 +176,7 @@
 				);
 				-webkit-clip-path: url('#github');
 				clip-path: url(#github);
+				animation: hue 2s linear infinite;
 			}
 
 			.spiner-box {
@@ -224,6 +228,15 @@
 				}
 			}
 
+			@keyframes hue {
+				50% {
+					filter: hue-rotate(0deg);
+				}
+				100% {
+					filter: hue-rotate(360deg);
+				}
+			}
+
 			@keyframes shadow {
 				0% {
 					filter: drop-shadow(0px 20px 3px rgba(226, 125, 1, 0.9));
@@ -259,11 +272,11 @@
 
 			.path-shadow {
 				height: 400px;
-				display: block;
 				margin: 20px auto;
 				filter: drop-shadow(0px 20px 3px rgba(226, 125, 1, 0.9));
 				animation: shadow 3s infinite linear;
 			}
+
 			.path-shadow-shape {
 				padding: 120px;
 				border: 1px solid #222;
@@ -319,6 +332,12 @@
 				height: 100px;
 				animation: spin 4s infinite linear;
 			}
+
+			input[type='range'],
+			input[type='range']::-webkit-slider-runnable-track,
+			input[type='range']::-webkit-slider-thumb {
+				-webkit-appearance: none;
+			}
 		</style>
 	</head>
 	<body>
@@ -337,6 +356,20 @@
 
 		<div class="spiner-box">
 			<div class="spiner"></div>
+			<div class="text">
+				<p class="rainbow-text-color title-size">
+					Let's build rainbow border in CSS
+				</p>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
+					laudantium facilis obcaecati labore quo sapiente veritatis numquam,
+					nesciunt architecto accusamus? Voluptatibus fuga reprehenderit est
+					tenetur officiis earum repellat animi amet?
+				</p>
+			</div>
+		</div>
+
+		<div class="box radial">
 			<div class="text">
 				<p class="rainbow-text-color title-size">
 					Let's build rainbow border in CSS
@@ -381,20 +414,6 @@
 		<div class="box">
 			<div class="text rainbow-box">
 				<p class="rainbow-text-color-lr title-size">
-					Let's build rainbow border in CSS
-				</p>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
-					laudantium facilis obcaecati labore quo sapiente veritatis numquam,
-					nesciunt architecto accusamus? Voluptatibus fuga reprehenderit est
-					tenetur officiis earum repellat animi amet?
-				</p>
-			</div>
-		</div>
-
-		<div class="box radial">
-			<div class="text">
-				<p class="rainbow-text-color title-size">
 					Let's build rainbow border in CSS
 				</p>
 				<p>

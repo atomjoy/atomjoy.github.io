@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Okrągły pasek postępu css, js, html</title>
+
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Titan+One&display=swap');
+
+			:root {
+				--color: hsl(241, 83%, 18%);
+				--color-light: hsl(0, 100%, 94%);
+				--circle-bg: #eef0f4;
+			}
+
+			body {
+				background: var(--circle-bg);
+				font-family: 'Titan One', cursive;
+				text-align: center;
+				color: var(--color);
+			}
+
+			.circle-bar {
+				width: 300px;
+				height: 300px;
+				position: relative;
+				margin: 50px auto;
+				border-radius: 100%;
+				background: conic-gradient(
+					#09f,
+					#7d3,
+					#ff0,
+					#f50,
+					#f23 var(--degree),
+					#dedede 0deg
+				);
+				box-shadow: inset 7.51px 7.51px 9px #d0d2d6,
+					inset -7.51px -7.51px 9px #ffffff;
+				z-index: 1;
+			}
+
+			.circle-bar::before {
+				content: '';
+				position: absolute;
+				top: -10px;
+				left: -10px;
+				width: 320px;
+				height: 320px;
+				border-radius: 100%;
+				box-shadow: 7.51px 7.51px 9px #d0d2d6, -7.51px -7.51px 9px #ffffff;
+				z-index: 0;
+			}
+
+			.circle-bar::after {
+				content: attr(data-degree) '°';
+				position: absolute;
+				top: 50px;
+				left: 50px;
+				border-radius: 100%;
+				width: 200px;
+				height: 200px;
+				z-index: 1;
+				box-sizing: border-box;
+				text-align: center;
+				font-size: 55px;
+				font-weight: 900;
+				font-family: Verdana, Geneva, Tahoma, sans-serif;
+				line-height: 200px;
+				background: linear-gradient(145deg, #cacccf, #ffffff);
+				box-shadow: 7.51px 7.51px 9px #d0d2d6, -7.51px -7.51px 9px #ffffff,
+					inset 7.51px 7.51px 9px #d0d2d6, inset -7.51px -7.51px 9px #ffffff;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Okrągły pasek postępu</h1>
+
+		<div
+			class="circle-bar"
+			id="circle-bar-1"
+			data-degree="123"
+			style="--degree: 123deg"
+		></div>
+
+		<div
+			class="circle-bar"
+			id="circle-bar-2"
+			data-degree="321"
+			style="--degree: 321deg"
+		></div>
+	</body>
+	<script>
+		function setCircleBar(
+			degree = 125,
+			id,
+			gradient = '#09f,#7d3,#ff0,#f50,#f23'
+		) {
+			let bar = document.querySelector(id)
+			let cnt = 0
+			setInterval(() => {
+				if (cnt < degree) {
+					cnt++
+				} else {
+					clearInterval(this)
+					return
+				}
+				bar.dataset.degree = cnt
+				bar.style.background = `conic-gradient(${gradient} ${cnt}deg, #eee 0deg)`
+			}, 10)
+		}
+
+		window.onload = () => {
+			setCircleBar(123, '#circle-bar-1')
+			setCircleBar(321, '#circle-bar-2', '#09f,#90f')
+		}
+	</script>
+</html>

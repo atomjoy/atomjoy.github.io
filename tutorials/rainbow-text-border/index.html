@@ -238,6 +238,12 @@
 				}
 			}
 
+			@keyframes circle {
+				100% {
+					stroke-dashoffset: 55;
+				}
+			}
+
 			@keyframes shadow {
 				0% {
 					filter: drop-shadow(0px 20px 3px rgba(226, 125, 1, 0.9));
@@ -339,6 +345,142 @@
 			input[type='range']::-webkit-slider-thumb {
 				-webkit-appearance: none;
 			}
+
+			.cone {
+				position: relative;
+				padding: 30px;
+				margin: 20px auto;
+				border-radius: 100%;
+				width: 200px;
+				height: 200px;
+				background: conic-gradient(
+					hsl(360, 100%, 50%),
+					hsl(315, 100%, 50%),
+					hsl(270, 100%, 50%),
+					hsl(225, 100%, 50%),
+					hsl(180, 100%, 50%),
+					hsl(135, 100%, 50%),
+					hsl(90, 100%, 50%),
+					hsl(45, 100%, 50%),
+					hsl(0, 100%, 50%)
+				);
+				z-index: 0;
+				animation: spin 5s linear infinite;
+			}
+
+			.cone::before {
+				content: '';
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				border-radius: 100%;
+				width: 200px;
+				height: 200px;
+				padding: 30px;
+				background: conic-gradient(
+					hsl(360, 100%, 50%),
+					hsl(315, 100%, 50%),
+					hsl(270, 100%, 50%),
+					hsl(225, 100%, 50%),
+					hsl(180, 100%, 50%),
+					hsl(135, 100%, 50%),
+					hsl(90, 100%, 50%),
+					hsl(45, 100%, 50%),
+					hsl(0, 100%, 50%)
+				);
+				z-index: -5;
+				filter: blur(20px);
+			}
+
+			.cone::after {
+				content: '';
+				position: absolute;
+				top: 30px;
+				left: 30px;
+				border-radius: 100%;
+				width: 200px;
+				height: 200px;
+				z-index: 1;
+				background: #222;
+			}
+
+			.neumorph {
+				position: relative;
+				padding: 50px;
+				margin: 50px auto;
+				border-radius: 100%;
+				width: 200px;
+				height: 200px;
+				z-index: 0;
+				background: #222222;
+				box-shadow: 26px 26px 22px #1d1d1d, -26px -26px 22px #272727;
+			}
+
+			.neumorph::before {
+				content: '';
+				position: absolute;
+				top: 10px;
+				left: 10px;
+				border-radius: 100%;
+				width: 200px;
+				height: 200px;
+				padding: 40px;
+				background: conic-gradient(
+					#09f,
+					#7d3,
+					#ff0,
+					#f50,
+					#f23 var(--proc),
+					#262626 0deg
+				);
+				z-index: 1;
+			}
+
+			.neumorph::after {
+				content: attr(proc) '°';
+				position: absolute;
+				top: 50px;
+				left: 50px;
+				border-radius: 100%;
+				width: 200px;
+				height: 200px;
+				z-index: 1;
+				color: #fff;
+				background: #222;
+				box-sizing: border-box;
+				text-align: center;
+				font-size: 33px;
+				font-weight: 900;
+				font-family: Verdana, Geneva, Tahoma, sans-serif;
+				line-height: 200px;
+			}
+
+			svg {
+				transform: rotate(-90deg);
+			}
+
+			svg circle {
+				fill: none;
+				stroke: url(#circleGradient) #70fd33;
+				stroke-width: 30px;
+				stroke-dasharray: 570;
+				stroke-dashoffset: 500;
+				stroke-linecap: round;
+				background: #222222;
+				animation: circle 3s linear forwards;
+			}
+
+			.circle-bg {
+				position: relative;
+				display: inline-block;
+				width: 240px;
+				height: 240px;
+				margin: 50px auto;
+				border-radius: 100%;
+				box-shadow: 26px 26px 22px #1d1d1d, -26px -26px 22px #272727;
+				animation: circle 3s linear forwards;
+				z-index: 0;
+			}
 		</style>
 	</head>
 	<body>
@@ -428,6 +570,27 @@
 
 		<div class="path-shadow">
 			<div class="path-shadow-shape"></div>
+		</div>
+
+		<div class="cone"></div>
+
+		<div class="neumorph" style="--proc: 299deg" proc="299"></div>
+
+		<div class="circle-bg">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				version="1.1"
+				width="240px"
+				height="240px"
+			>
+				<defs>
+					<linearGradient id="circleGradient">
+						<stop offset="0%" stop-color="#e91e63" />
+						<stop offset="100%" stop-color="#09f" />
+					</linearGradient>
+				</defs>
+				<circle cx="120" cy="120" r="90" stroke-linecap="round" />
+			</svg>
 		</div>
 	</body>
 </html>

@@ -39,6 +39,7 @@
 				box-shadow: inset 7.51px 7.51px 9px #d0d2d6,
 					inset -7.51px -7.51px 9px #ffffff;
 				z-index: 1;
+				transition: all 1s ease;
 			}
 
 			.circle-bar::before {
@@ -90,12 +91,20 @@
 			data-degree="321"
 			style="--degree: 321deg"
 		></div>
+
+		<div
+			class="circle-bar"
+			id="circle-bar-3"
+			data-degree="350"
+			style="--degree: 350deg"
+		></div>
 	</body>
 	<script>
 		function setCircleBar(
 			degree = 125,
 			id,
-			gradient = '#09f,#7d3,#ff0,#f50,#f23'
+			gradient = '#09f,#7d3,#ff0,#f50,#f23',
+			levels = false
 		) {
 			let bar = document.querySelector(id)
 			let cnt = 0
@@ -106,14 +115,31 @@
 					clearInterval(this)
 					return
 				}
+
+				if (levels) {
+					if (cnt > 0 && cnt < 100) {
+						gradient = '#09f,#7d3'
+					}
+					if (cnt > 100 && cnt < 200) {
+						gradient = '#09f,#7d3,#ff0'
+					}
+					if (cnt > 200 && cnt < 300) {
+						gradient = '#09f,#7d3,#ff0,#f50'
+					}
+					if (cnt > 300) {
+						gradient = '#09f,#7d3,#ff0,#f50,#f23'
+					}
+				}
+
 				bar.dataset.degree = cnt
 				bar.style.background = `conic-gradient(${gradient} ${cnt}deg, #eee 0deg)`
 			}, 10)
 		}
 
 		window.onload = () => {
-			setCircleBar(123, '#circle-bar-1')
-			setCircleBar(321, '#circle-bar-2', '#09f,#90f')
+			setCircleBar(221, '#circle-bar-1')
+			setCircleBar(321, '#circle-bar-2', null, true)
+			setCircleBar(356, '#circle-bar-3', '#09f,#90f')
 		}
 	</script>
 </html>

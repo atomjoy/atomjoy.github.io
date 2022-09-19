@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Okrągły pasek postępu svg, css, js, html</title>
+
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Titan+One&display=swap');
+
+			:root {
+				--color: hsl(241, 83%, 18%);
+				--color-light: hsl(0, 100%, 94%);
+				--circle-bg: #eef0f4;
+			}
+
+			body {
+				background: var(--circle-bg);
+				font-family: 'Titan One', cursive;
+				text-align: center;
+				color: var(--color);
+			}
+
+			svg {
+				transform: rotate(-90deg);
+			}
+
+			svg circle {
+				fill: none;
+				/* stroke: url(#circleGradient) #70fd33; */
+				stroke-width: 40px;
+				stroke-dasharray: 566;
+				stroke-dashoffset: calc(566px - var(--svg-percent) * 5.66px);
+				stroke-linecap: round;
+				background: var(--circle-bg);
+			}
+
+			.circle-bar-svg {
+				position: relative;
+				width: 240px;
+				height: 240px;
+				margin: 50px auto;
+				border-radius: 100%;
+				background: linear-gradient(145deg, #d6d8dc, #ffffff);
+				box-shadow: 9px 9px 18px #cfd1d4, -9px -9px 18px #ffffff;
+				z-index: 0;
+			}
+
+			.circle-bar-svg::before {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 150px;
+				height: 150px;
+				border-radius: 100%;
+				background: linear-gradient(145deg, #fff, #cacaca);
+				box-shadow: 0px 0px 19px #fff;
+				z-index: 1;
+			}
+
+			.circle-bar-svg .after {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				z-index: 2;
+				color: var(--color);
+				text-align: center;
+				font-size: 38px;
+				font-weight: 900;
+				font-family: Verdana, Geneva, Tahoma, sans-serif;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Okrągły pasek postępu z svg</h1>
+
+		<div
+			class="circle-bar-svg"
+			id="circle-bar-svg-1"
+			style="--svg-percent: 88"
+			proc="55"
+		>
+			<span class="after">88%</span>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				version="1.1"
+				width="240px"
+				height="240px"
+			>
+				<defs>
+					<linearGradient
+						id="circleGradient"
+						gradientUnits="objectBoundingBox"
+						x1="1"
+						y1="1"
+						x2="0"
+						y2="0"
+					>
+						<stop offset="0%" stop-color="#90f" />
+						<stop offset="100%" stop-color="#09f" />
+					</linearGradient>
+				</defs>
+				<circle
+					cx="120"
+					cy="120"
+					r="90"
+					fill="transparent"
+					stroke="url(#circleGradient)"
+					stroke-width="30"
+					stroke-linecap="round"
+					stroke-dasharray="560"
+					stroke-dashoffset="0"
+				/>
+			</svg>
+		</div>
+
+		<div
+			class="circle-bar-svg"
+			id="circle-bar-svg-2"
+			style="--svg-percent: 75"
+			proc="75"
+		>
+			<span class="after">75%</span>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				version="1.1"
+				width="240px"
+				height="240px"
+			>
+				<defs>
+					<linearGradient
+						id="cg"
+						gradientUnits="objectBoundingBox"
+						x1="1"
+						y1="1"
+						x2="0"
+						y2="0"
+					>
+						<stop offset="0%" stop-color="#09f" />
+						<stop offset="100%" stop-color="#b3ff00" />
+					</linearGradient>
+				</defs>
+				<circle
+					cx="120"
+					cy="120"
+					r="90"
+					fill="transparent"
+					stroke="url(#cg)"
+					stroke-width="30"
+					stroke-linecap="round"
+					stroke-dasharray="560"
+					stroke-dashoffset="0"
+				/>
+			</svg>
+		</div>
+	</body>
+	<script>
+		function setCircleSvgBar(percent = 77, id) {
+			let bar = document.querySelector(id + ' svg circle')
+			let bar1 = document.querySelector(id + ' .after')
+			let cnt = 0
+			setInterval(() => {
+				if (cnt < percent) {
+					cnt++
+					bar.style.strokeDashoffset = 566 - cnt * 5.66
+					bar1.innerHTML = cnt + '%'
+				} else {
+					clearInterval(this)
+					return
+				}
+			}, 10)
+		}
+
+		window.onload = () => {
+			// Animate progress bar
+			setCircleSvgBar(100, '#circle-bar-svg-2')
+		}
+	</script>
+</html>

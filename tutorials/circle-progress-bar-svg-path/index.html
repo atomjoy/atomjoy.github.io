@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Animowany pasek stanu css svg</title>
+
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Titan+One&display=swap');
+
+			body {
+				background: #eef0f4;
+				font-family: 'Titan One', cursive;
+				text-align: center;
+				color: hsl(241, 83%, 18%);
+			}
+
+			h1 {
+				text-align: center;
+			}
+
+			center {
+				padding: 50px 0px;
+			}
+
+			svg {
+				position: relative;
+				max-width: 300px;
+				display: inline-block;
+				margin: 0 auto;
+				padding: 10px;
+				border-radius: 50%;
+				background: linear-gradient(145deg, #d6d8dc, #ffffff);
+				box-shadow: 9px 9px 18px #cfd1d4, -9px -9px 18px #ffffff;
+			}
+
+			svg .img {
+				float: left;
+				width: 55px;
+				height: 55px;
+				overflow: hidden;
+				border-radius: 100%;
+				border: 2px solid #eee;
+				background: linear-gradient(145deg, #fff, #cacaca);
+				line-height: 55px;
+			}
+
+			svg div.coneGradient {
+				width: 100%;
+				height: 100%;
+				border-radius: 50%;
+				background: conic-gradient(
+					from 270deg,
+					#ff4800 10%,
+					#dfd902 35%,
+					#20dc68,
+					#0092f4,
+					#da54d8 72% 75%,
+					#ff4800 95%
+				);
+			}
+
+			svg mask circle {
+				stroke-width: 15;
+				stroke-linecap: round;
+				stroke-dasharray: 252;
+				stroke-dashoffset: 252;
+				stroke-dashoffset: calc(252px - var(--proc) * 2.52px);
+			}
+
+			@keyframes colorRotate {
+				to {
+					transform: rotate(360deg);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Animowany pasek stanu css svg</h1>
+
+		<center>
+			<div class="circle-cone" id="circle-cone" style="--proc: 75" proc="75">
+				<svg viewBox="0 0 100 100">
+					<mask id="myMask">
+						<!-- Everything under a white pixel will be visible -->
+						<circle
+							cx="50"
+							cy="50"
+							r="40"
+							fill="black"
+							stroke="white"
+							transform="rotate(-90, 50, 50)"
+						/>
+					</mask>
+
+					<!-- with this mask applied, we "punch" a circle shape hole into the circle -->
+					<foreignObject
+						x="0"
+						y="0"
+						width="100"
+						height="100"
+						mask="url(#myMask)"
+					>
+						<div class="coneGradient"></div>
+					</foreignObject>
+
+					<foreignObject x="20" y="20" width="60" height="60">
+						<div class="img">75%</div>
+					</foreignObject>
+				</svg>
+			</div>
+		</center>
+	</body>
+
+	<script>
+		function setCircleAnimateBar(percent = 100, id) {
+			let bar = document.querySelector(id + ' svg mask circle')
+			let bar1 = document.querySelector(id + ' .img')
+			let cnt = 0
+			setInterval(() => {
+				if (cnt < percent) {
+					cnt++
+					bar.style.strokeDashoffset = 252 - cnt * 2.52
+					bar1.innerHTML = cnt + '%'
+				} else {
+					clearInterval(this)
+					return
+				}
+			}, 10)
+		}
+
+		window.onload = () => {
+			// Animate progress bar
+			setCircleAnimateBar(92, '#circle-cone')
+		}
+	</script>
+</html>

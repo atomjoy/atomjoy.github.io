@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Scroll animation</title>
+		<script>
+			let observer = new IntersectionObserver((entries, observer) => {
+				entries.forEach((entry) => {
+					console.log(entry)
+					if (entry.isIntersecting) {
+						entry.target.classList.add('show-el')
+					} else {
+						entry.target.classList.remove('show-el')
+					}
+
+					// Each entry describes an intersection change for one observed
+					// target element:
+					//   entry.boundingClientRect
+					//   entry.intersectionRatio
+					//   entry.intersectionRect
+					//   entry.isIntersecting
+					//   entry.rootBounds
+					//   entry.target
+					//   entry.time
+				})
+			})
+
+			window.onload = () => {
+				let list = document.querySelectorAll('.hidden-el')
+				list.forEach((el) => {
+					observer.observe(el)
+				})
+			}
+		</script>
+
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
+
+			body {
+				font-family: 'Nerko One', cursive;
+			}
+
+			.hidden-el {
+				opacity: 0;
+				filter: blur(10px);
+				transform: translateX(-100%);
+				border-radius: 300%;
+			}
+
+			.show-el {
+				opacity: 1;
+				filter: blur(0);
+				transform: translateX(0);
+				transition: all 0.8s;
+				border-radius: 1%;
+			}
+
+			.list {
+				display: flex;
+				align-items: center;
+				justify-content: space-evenly;
+			}
+
+			.list-el {
+				display: inline-block;
+				width: 16%;
+				border: 1px solid #07f;
+				padding: 1%;
+				box-shadow: 0px 0px 0px 5px rgba(58, 155, 234, 0.3);
+			}
+
+			.list-el:nth-child(1) {
+				transition-delay: 100ms;
+			}
+
+			.list-el:nth-child(2) {
+				transition-delay: 200ms;
+			}
+
+			.list-el:nth-child(3) {
+				transition-delay: 300ms;
+			}
+
+			.list-el:nth-child(4) {
+				transition-delay: 400ms;
+			}
+
+			.space {
+				color: #eee;
+				height: 20vw;
+				padding: 10% 0px;
+				box-sizing: border-box;
+				text-align: center;
+				font-weight: 400;
+				font-size: 20vw;
+			}
+
+			h1 {
+				text-align: center;
+				padding: 1% 0px;
+			}
+
+			@media (prefers-reduced-motion) {
+				.hidden-el {
+					transition: none;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<h1>scroll me</h1>
+
+		<div class="space">WOOOW</div>
+
+		<div class="list">
+			<img
+				src="https://img.freepik.com/free-photo/heart-shape-favorite-social-media-notification-icon-speech-bubbles-3d-cartoon-banner-website-ui-pink-background-3d-rendering-illustration_56104-1333.jpg?t=st=1669800903~exp=1669801503~hmac=f2425ba13310681c1f0a8a19957d6d4368c98a54f93603b9bd232a6290aceb47"
+				alt="Logo"
+				class="list-el hidden-el" />
+			<img
+				src="https://img.freepik.com/free-photo/heart-shape-favorite-social-media-notification-icon-speech-bubbles-3d-cartoon-banner-website-ui-pink-background-3d-rendering-illustration_56104-1333.jpg?t=st=1669800903~exp=1669801503~hmac=f2425ba13310681c1f0a8a19957d6d4368c98a54f93603b9bd232a6290aceb47"
+				alt="Logo"
+				class="list-el hidden-el" />
+			<img
+				src="https://img.freepik.com/free-photo/heart-shape-favorite-social-media-notification-icon-speech-bubbles-3d-cartoon-banner-website-ui-pink-background-3d-rendering-illustration_56104-1333.jpg?t=st=1669800903~exp=1669801503~hmac=f2425ba13310681c1f0a8a19957d6d4368c98a54f93603b9bd232a6290aceb47"
+				alt="Logo"
+				class="list-el hidden-el" />
+			<img
+				src="https://img.freepik.com/free-photo/heart-shape-favorite-social-media-notification-icon-speech-bubbles-3d-cartoon-banner-website-ui-pink-background-3d-rendering-illustration_56104-1333.jpg?t=st=1669800903~exp=1669801503~hmac=f2425ba13310681c1f0a8a19957d6d4368c98a54f93603b9bd232a6290aceb47"
+				alt="Logo"
+				class="list-el hidden-el" />
+		</div>
+
+		<div class="space">POOOW</div>
+		<div class="list">
+			<img
+				src="https://img.freepik.com/free-photo/purple-calendar-clock-icon-3d-reminder-notification-concept-website-ui-purple-background-3d-rendering-illustration_56104-1317.jpg?w=900&t=st=1669800910~exp=1669801510~hmac=55207a7f489cfba5417436f6947c703936aabd532ae76fda5d5a57053f25e892"
+				alt="Logo"
+				class="list-el hidden-el" />
+			<img
+				src="https://img.freepik.com/free-photo/purple-calendar-clock-icon-3d-reminder-notification-concept-website-ui-purple-background-3d-rendering-illustration_56104-1317.jpg?w=900&t=st=1669800910~exp=1669801510~hmac=55207a7f489cfba5417436f6947c703936aabd532ae76fda5d5a57053f25e892"
+				alt="Logo"
+				class="list-el hidden-el" />
+			<img
+				src="https://img.freepik.com/free-photo/purple-calendar-clock-icon-3d-reminder-notification-concept-website-ui-purple-background-3d-rendering-illustration_56104-1317.jpg?w=900&t=st=1669800910~exp=1669801510~hmac=55207a7f489cfba5417436f6947c703936aabd532ae76fda5d5a57053f25e892"
+				alt="Logo"
+				class="list-el hidden-el" />
+			<img
+				src="https://img.freepik.com/free-photo/purple-calendar-clock-icon-3d-reminder-notification-concept-website-ui-purple-background-3d-rendering-illustration_56104-1317.jpg?w=900&t=st=1669800910~exp=1669801510~hmac=55207a7f489cfba5417436f6947c703936aabd532ae76fda5d5a57053f25e892"
+				alt="Logo"
+				class="list-el hidden-el" />
+		</div>
+
+		<div class="space">WOOOW</div>
+
+		<div class="list">
+			<img
+				src="https://img.freepik.com/free-photo/heart-shape-favorite-social-media-notification-icon-speech-bubbles-3d-cartoon-banner-website-ui-pink-background-3d-rendering-illustration_56104-1333.jpg?t=st=1669800903~exp=1669801503~hmac=f2425ba13310681c1f0a8a19957d6d4368c98a54f93603b9bd232a6290aceb47"
+				alt="Logo"
+				class="list-el hidden-el" />
+			<img
+				src="https://img.freepik.com/free-photo/heart-shape-favorite-social-media-notification-icon-speech-bubbles-3d-cartoon-banner-website-ui-pink-background-3d-rendering-illustration_56104-1333.jpg?t=st=1669800903~exp=1669801503~hmac=f2425ba13310681c1f0a8a19957d6d4368c98a54f93603b9bd232a6290aceb47"
+				alt="Logo"
+				class="list-el hidden-el" />
+			<img
+				src="https://img.freepik.com/free-photo/heart-shape-favorite-social-media-notification-icon-speech-bubbles-3d-cartoon-banner-website-ui-pink-background-3d-rendering-illustration_56104-1333.jpg?t=st=1669800903~exp=1669801503~hmac=f2425ba13310681c1f0a8a19957d6d4368c98a54f93603b9bd232a6290aceb47"
+				alt="Logo"
+				class="list-el hidden-el" />
+			<img
+				src="https://img.freepik.com/free-photo/heart-shape-favorite-social-media-notification-icon-speech-bubbles-3d-cartoon-banner-website-ui-pink-background-3d-rendering-illustration_56104-1333.jpg?t=st=1669800903~exp=1669801503~hmac=f2425ba13310681c1f0a8a19957d6d4368c98a54f93603b9bd232a6290aceb47"
+				alt="Logo"
+				class="list-el hidden-el" />
+		</div>
+
+		<div class="space">POOOW</div>
+		<div class="list">
+			<img
+				src="https://img.freepik.com/free-photo/purple-calendar-clock-icon-3d-reminder-notification-concept-website-ui-purple-background-3d-rendering-illustration_56104-1317.jpg?w=900&t=st=1669800910~exp=1669801510~hmac=55207a7f489cfba5417436f6947c703936aabd532ae76fda5d5a57053f25e892"
+				alt="Logo"
+				class="list-el hidden-el" />
+			<img
+				src="https://img.freepik.com/free-photo/purple-calendar-clock-icon-3d-reminder-notification-concept-website-ui-purple-background-3d-rendering-illustration_56104-1317.jpg?w=900&t=st=1669800910~exp=1669801510~hmac=55207a7f489cfba5417436f6947c703936aabd532ae76fda5d5a57053f25e892"
+				alt="Logo"
+				class="list-el hidden-el" />
+			<img
+				src="https://img.freepik.com/free-photo/purple-calendar-clock-icon-3d-reminder-notification-concept-website-ui-purple-background-3d-rendering-illustration_56104-1317.jpg?w=900&t=st=1669800910~exp=1669801510~hmac=55207a7f489cfba5417436f6947c703936aabd532ae76fda5d5a57053f25e892"
+				alt="Logo"
+				class="list-el hidden-el" />
+			<img
+				src="https://img.freepik.com/free-photo/purple-calendar-clock-icon-3d-reminder-notification-concept-website-ui-purple-background-3d-rendering-illustration_56104-1317.jpg?w=900&t=st=1669800910~exp=1669801510~hmac=55207a7f489cfba5417436f6947c703936aabd532ae76fda5d5a57053f25e892"
+				alt="Logo"
+				class="list-el hidden-el" />
+		</div>
+
+		<div class="space">WOOOW</div>
+
+		<div class="list">
+			<img
+				src="https://img.freepik.com/free-photo/heart-shape-favorite-social-media-notification-icon-speech-bubbles-3d-cartoon-banner-website-ui-pink-background-3d-rendering-illustration_56104-1333.jpg?t=st=1669800903~exp=1669801503~hmac=f2425ba13310681c1f0a8a19957d6d4368c98a54f93603b9bd232a6290aceb47"
+				alt="Logo"
+				class="list-el hidden-el" />
+			<img
+				src="https://img.freepik.com/free-photo/heart-shape-favorite-social-media-notification-icon-speech-bubbles-3d-cartoon-banner-website-ui-pink-background-3d-rendering-illustration_56104-1333.jpg?t=st=1669800903~exp=1669801503~hmac=f2425ba13310681c1f0a8a19957d6d4368c98a54f93603b9bd232a6290aceb47"
+				alt="Logo"
+				class="list-el hidden-el" />
+			<img
+				src="https://img.freepik.com/free-photo/heart-shape-favorite-social-media-notification-icon-speech-bubbles-3d-cartoon-banner-website-ui-pink-background-3d-rendering-illustration_56104-1333.jpg?t=st=1669800903~exp=1669801503~hmac=f2425ba13310681c1f0a8a19957d6d4368c98a54f93603b9bd232a6290aceb47"
+				alt="Logo"
+				class="list-el hidden-el" />
+			<img
+				src="https://img.freepik.com/free-photo/heart-shape-favorite-social-media-notification-icon-speech-bubbles-3d-cartoon-banner-website-ui-pink-background-3d-rendering-illustration_56104-1333.jpg?t=st=1669800903~exp=1669801503~hmac=f2425ba13310681c1f0a8a19957d6d4368c98a54f93603b9bd232a6290aceb47"
+				alt="Logo"
+				class="list-el hidden-el" />
+		</div>
+
+		<div class="space">POOOW</div>
+		<div class="list">
+			<img
+				src="https://img.freepik.com/free-photo/purple-calendar-clock-icon-3d-reminder-notification-concept-website-ui-purple-background-3d-rendering-illustration_56104-1317.jpg?w=900&t=st=1669800910~exp=1669801510~hmac=55207a7f489cfba5417436f6947c703936aabd532ae76fda5d5a57053f25e892"
+				alt="Logo"
+				class="list-el hidden-el" />
+			<img
+				src="https://img.freepik.com/free-photo/purple-calendar-clock-icon-3d-reminder-notification-concept-website-ui-purple-background-3d-rendering-illustration_56104-1317.jpg?w=900&t=st=1669800910~exp=1669801510~hmac=55207a7f489cfba5417436f6947c703936aabd532ae76fda5d5a57053f25e892"
+				alt="Logo"
+				class="list-el hidden-el" />
+			<img
+				src="https://img.freepik.com/free-photo/purple-calendar-clock-icon-3d-reminder-notification-concept-website-ui-purple-background-3d-rendering-illustration_56104-1317.jpg?w=900&t=st=1669800910~exp=1669801510~hmac=55207a7f489cfba5417436f6947c703936aabd532ae76fda5d5a57053f25e892"
+				alt="Logo"
+				class="list-el hidden-el" />
+			<img
+				src="https://img.freepik.com/free-photo/purple-calendar-clock-icon-3d-reminder-notification-concept-website-ui-purple-background-3d-rendering-illustration_56104-1317.jpg?w=900&t=st=1669800910~exp=1669801510~hmac=55207a7f489cfba5417436f6947c703936aabd532ae76fda5d5a57053f25e892"
+				alt="Logo"
+				class="list-el hidden-el" />
+		</div>
+
+		<div class="space">FIIIIIN</div>
+	</body>
+</html>

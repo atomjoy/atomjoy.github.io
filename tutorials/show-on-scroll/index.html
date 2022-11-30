@@ -46,7 +46,7 @@
 				opacity: 0;
 				filter: blur(10px);
 				transform: translateX(-100%);
-				border-radius: 300%;
+				border-radius: 200%;
 			}
 
 			.show-el {
@@ -59,6 +59,7 @@
 
 			.list {
 				display: flex;
+				flex-wrap: wrap;
 				align-items: center;
 				justify-content: space-evenly;
 			}
@@ -68,6 +69,7 @@
 				width: 16%;
 				border: 1px solid #07f;
 				padding: 1%;
+				margin-bottom: 30px;
 				box-shadow: 0px 0px 0px 5px rgba(58, 155, 234, 0.3);
 			}
 
@@ -100,6 +102,13 @@
 			h1 {
 				text-align: center;
 				padding: 1% 0px;
+			}
+
+			@media (max-width: 640px) {
+				.list-el {
+					display: inline-block;
+					width: 40%;
+				}
 			}
 
 			@media (prefers-reduced-motion) {

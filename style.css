@@ -18,7 +18,7 @@ body {
 	padding: 0;
 	min-height: 100vh;
 	overflow-x: hidden;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Poppins', Arial, Helvetica, sans-serif;
 	font-family: 'Pixelify Sans', cursive;
 	background: var(--bg); /* #FF8B01 #fdc50a #f9cf60 #88ce04 #f2c836 */
 }
@@ -871,6 +871,7 @@ span.clr-3::before {
 	border: 0px;
 	border-color: #fff;
 	border-left: 0px solid #141414;
+	font-family: Poppins, Arial, Helvetica, sans-serif;
 }
 
 .footer-left {
@@ -997,7 +998,7 @@ input:focus {
 	color: #fff;
 	font-size: 50px;
 	font-weight: 900;
-	font-family: 'Poppins';
+	font-family: 'Poppins', Arial, Helvetica, sans-serif;
 	z-index: 9;
 }
 .footer-location {
@@ -1006,7 +1007,7 @@ input:focus {
 	left: 120px;
 	color: #fff;
 	font-size: 16px;
-	font-family: 'Poppins';
+	font-family: 'Poppins', Arial, Helvetica, sans-serif;
 	font-weight: 300;
 }
 .footer-city {
@@ -1015,7 +1016,7 @@ input:focus {
 	left: 120px;
 	color: #f0f0f0;
 	font-size: 18px;
-	font-family: 'Poppins';
+	font-family: 'Poppins', Arial, Helvetica, sans-serif;
 }
 .footer-address {
 	position: absolute;
@@ -1023,7 +1024,7 @@ input:focus {
 	left: 120px;
 	color: #f0f0f0;
 	font-size: 16px;
-	font-family: 'Poppins';
+	font-family: 'Poppins', Arial, Helvetica, sans-serif;
 }
 
 .footer-contact {
@@ -1032,7 +1033,7 @@ input:focus {
 	left: 120px;
 	color: #f0f0f0;
 	font-size: 16px;
-	font-family: 'Poppins';
+	font-family: 'Poppins', Arial, Helvetica, sans-serif;
 	font-weight: 300;
 }
 .footer-contact a {
@@ -1055,7 +1056,7 @@ input:focus {
 	bottom: 20px;
 	color: #fffce1;
 	font-size: 14px;
-	font-family: 'Poppins';
+	font-family: 'Poppins', Arial, Helvetica, sans-serif;
 	opacity: 0.6;
 }
 
@@ -1414,7 +1415,7 @@ input:focus {
 	font-weight: 700;
 	line-break: anywhere;
 	color: #fff;
-	font-family: 'Poppins';
+	font-family: 'Poppins', Arial, Helvetica, sans-serif;
 }
 
 .details .text {
